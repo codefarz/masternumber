@@ -5,7 +5,7 @@ let remainingAttempts;
 let startGameSound = new Audio('success-fanfare-trumpets-6185.mp3');
 let coincidenceSound = new Audio('interface-trial-124464.mp3');
 let matchSound = new Audio('decidemp3-14575.mp3');
-let winSound = new Audio('success-1-6297.mp3');
+let winSound = new Audio('goodresult-82807.mp3');
 let loseSound = new Audio('videogame-death-sound-43894.mp3');
 
 
