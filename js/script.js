@@ -2,11 +2,11 @@
 let remainingAttempts;
 
 // Declaramos los sonidos que tendrá el juego
-let startGameSound = new Audio('/js/success-fanfare-trumpets-6185.mp3');
-let coincidenceSound = new Audio('/js/interface-trial-124464.mp3');
-let matchSound = new Audio('/js/decidemp3-14575.mp3');
-let winSound = new Audio('/js/success-1-6297.mp3');
-let loseSound = new Audio('/js/videogame-death-sound-43894.mp3');
+let startGameSound = new Audio('/js/sounds/success-fanfare-trumpets-6185.mp3');
+let coincidenceSound = new Audio('/js/sounds/interface-trial-124464.mp3');
+let matchSound = new Audio('/js/sounds/decidemp3-14575.mp3');
+let winSound = new Audio('/js/sounds/success-1-6297.mp3');
+let loseSound = new Audio('/js/sounds/videogame-death-sound-43894.mp3');
 
 
 document.addEventListener('DOMContentLoaded', (event) => {
