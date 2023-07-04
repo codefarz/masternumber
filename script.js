@@ -1,4 +1,26 @@
-let attempts = 10;
+// Declarar remainingAttempts globalmente para que esté disponible en todas las funciones
+let remainingAttempts;
+
+window.onload = function() {
+    let myModal = new bootstrap.Modal(document.getElementById('attemptsModal'), {
+        keyboard: false,
+        backdrop: 'static'
+    });
+    myModal.show();
+}
+
+function setAttempts() {
+    remainingAttempts = document.getElementById('attemptInput').value;
+    if (remainingAttempts > 0) {
+        document.getElementById('attemptsDisplay').textContent = "Intentos: " + remainingAttempts;
+        let myModal = bootstrap.Modal.getInstance(document.getElementById('attemptsModal'));
+        myModal.hide();
+    }
+    else {
+        alert("Introduzca un número de intentos")
+    } 
+}
+
 let numberToGuess = generateNumber();
 
 function generateNumber() {
@@ -26,12 +48,14 @@ function guessNumber() {
         return;
     }
 
-    if (attempts === 0) {
+    if (remainingAttempts === 0) {
         document.getElementById('result').innerHTML = "No quedan intentos. El número era " + numberToGuess;
         return;
     }
 
-    attempts--;
+    // Reducir remainingAttempts cuando el jugador hace un intento
+    remainingAttempts--;
+    document.getElementById('attemptsDisplay').textContent = "Intentos: " + remainingAttempts;
 
     let match = 0;
     let coincidence = 0;
@@ -48,7 +72,7 @@ function guessNumber() {
         return;
     }
 
-    document.getElementById('result').innerHTML = "Coincidencias: " + coincidence + ", Matchs: " + match + ". Te quedan " + attempts + " intentos.";
+    document.getElementById('result').innerHTML = "Coincidencias: " + coincidence + ", Matchs: " + match + ". Te quedan " + remainingAttempts + " intentos.";
 
     addRowToTable(guess, coincidence, match)
 }

@@ -7,6 +7,28 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   </head>
   <body>
+    <!-- Modal HTML -->
+    <div class="modal" tabindex="-1" id="attemptsModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Instrucciones</h5>
+          </div>
+          <div class="modal-body px-4 px-lg-5">
+            <p>En este juego debes descubrir una secuencia aleatoria de 4 dígitos distintos.</p>
+            <ul>
+              <li><strong>Coincidencia:</strong> Uno de tus dígitos pertenece a la secuencia, pero su ubicación es incorrecta.</li>
+              <li><strong>Match:</strong> Uno de tus dígitos coincide con un dígito de la secuencia, en la ubicación correcta.</li>
+            </ul>
+            <input type="number" id="attemptInput" min="1" placeholder="Ingresa el Número de intentos">
+          </div>
+          <div class="modal-footer mx-auto">
+            <button type="button" class="btn btn-primary mx-auto" onclick="setAttempts()">Aceptar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="container mt-5">
       <div class="row justify-content-center">
         <div class="col-12 col-lg-6 container">
@@ -18,7 +40,8 @@
           <div class="row">
             <div class="col-10 justify-content-center mx-auto text-center">
               <h1 class="mb-3">Master Number</h1>
-              <p>Adivina el número de 4 cifras. Tienes 10 intentos.</p>
+              <p>Adivina el número de 4 cifras</p>
+              <p id="attemptsDisplay">Intentos: 0</p>
               <div class="input-group mb-3">
                 <input id="guess" type="text" class="form-control" placeholder="4 números diferentes" aria-label="Recipient's username" aria-describedby="button-addon2" maxlength="4">
                 <button onclick="guessNumber()" class="btn btn-outline-secondary" type="button" id="button-addon2">Adivinar</button>
