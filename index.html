@@ -17,10 +17,12 @@
           <div class="modal-body px-4 px-lg-5">
             <p>En este juego debes descubrir una secuencia aleatoria de 4 dígitos distintos.</p>
             <ul>
-              <li><strong>Coincidencia:</strong> Uno de tus dígitos pertenece a la secuencia, pero su ubicación es incorrecta.</li>
-              <li><strong>Match:</strong> Uno de tus dígitos coincide con un dígito de la secuencia, en la ubicación correcta.</li>
+                <li><strong>Coincidencia:</strong> Uno de tus dígitos pertenece a la secuencia, pero su ubicación es incorrecta.</li>
+                <li><strong>Match:</strong> Uno de tus dígitos coincide con un dígito de la secuencia, en la ubicación correcta.</li>
             </ul>
-            <input type="number" id="attemptInput" min="1" placeholder="Ingresa el Número de intentos">
+            <div class="input-group mb-3">
+                <input type="number" class="form-control" id="attemptInput" min="1" placeholder="Ingresa el Número de intentos">
+            </div>
           </div>
           <div class="modal-footer mx-auto">
             <button type="button" class="btn btn-primary mx-auto" onclick="setAttempts()">Aceptar</button>
