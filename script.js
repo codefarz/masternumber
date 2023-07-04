@@ -1,13 +1,13 @@
 // Declarar remainingAttempts globalmente para que esté disponible en todas las funciones
 let remainingAttempts;
 
-window.onload = function() {
-    let myModal = new bootstrap.Modal(document.getElementById('attemptsModal'), {
+document.addEventListener('DOMContentLoaded', (event) => {
+    var myModal = new bootstrap.Modal(document.getElementById('attemptsModal'), {
         keyboard: false,
         backdrop: 'static'
     });
     myModal.show();
-}
+});
 
 function setAttempts() {
     remainingAttempts = document.getElementById('attemptInput').value;
