@@ -10,7 +10,7 @@ let loseSound = new Audio('videogame-death-sound-43894.mp3');
 
 
 document.addEventListener('DOMContentLoaded', (event) => {
-    var myModal = new bootstrap.Modal(document.getElementById('attemptsModal'), {
+    let myModal = new bootstrap.Modal(document.getElementById('attemptsModal'), {
         keyboard: false,
         backdrop: 'static'
     });
@@ -47,6 +47,13 @@ let inputElement = document.getElementById('guess');
 inputElement.addEventListener('keydown', function(event) {
     if(event.key === 'Enter') {
         guessNumber();
+    }
+});
+
+let attemptInputElement = document.getElementById('attemptInput');
+attemptInputElement.addEventListener('keydown', function(event) {
+    if(event.key === 'Enter') {
+        setAttempts();
     }
 });
 
