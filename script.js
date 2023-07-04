@@ -49,13 +49,12 @@ function guessNumber() {
     }
 
     if (remainingAttempts === 0) {
-        document.getElementById('result').innerHTML = "No quedan intentos. El número era " + numberToGuess;
+        document.getElementById('finalBody').textContent = "No quedan intentos. El número era " + numberToGuess;
+        showFinalModal();
         return;
     }
 
-    // Reducir remainingAttempts cuando el jugador hace un intento
     remainingAttempts--;
-    document.getElementById('attemptsDisplay').textContent = "Intentos: " + remainingAttempts;
 
     let match = 0;
     let coincidence = 0;
@@ -68,13 +67,22 @@ function guessNumber() {
     }
 
     if (match === 4) {
-        document.getElementById('result').innerHTML = "¡Felicidades! Has adivinado el número: " + numberToGuess;
+        document.getElementById('finalBody').textContent = "¡Felicidades! Has adivinado el número: " + numberToGuess;
+        showFinalModal();
         return;
     }
 
     document.getElementById('result').innerHTML = "Coincidencias: " + coincidence + ", Matchs: " + match + ". Te quedan " + remainingAttempts + " intentos.";
 
     addRowToTable(guess, coincidence, match)
+}
+
+function showFinalModal() {
+    let myModal = new bootstrap.Modal(document.getElementById('finalModal'), {
+        keyboard: false,
+        backdrop: 'static'
+    });
+    myModal.show();
 }
 
 function addRowToTable(guess, coincidence, match) {
