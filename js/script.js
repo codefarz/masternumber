@@ -1,6 +1,14 @@
 // Declarar remainingAttempts globalmente para que esté disponible en todas las funciones
 let remainingAttempts;
 
+// Declaramos los sonidos que tendrá el juego
+let startGameSound = new Audio('/js/success-fanfare-trumpets-6185.mp3');
+let coincidenceSound = new Audio('/js/interface-trial-124464.mp3');
+let matchSound = new Audio('/js/decidemp3-14575.mp3');
+let winSound = new Audio('/js/success-1-6297.mp3');
+let loseSound = new Audio('/js/videogame-death-sound-43894.mp3');
+
+
 document.addEventListener('DOMContentLoaded', (event) => {
     var myModal = new bootstrap.Modal(document.getElementById('attemptsModal'), {
         keyboard: false,
@@ -18,7 +26,8 @@ function setAttempts() {
     }
     else {
         alert("Introduzca un número de intentos")
-    } 
+    }
+    startGameSound.play();
 }
 
 let numberToGuess = generateNumber();
@@ -51,6 +60,7 @@ function guessNumber() {
     if (remainingAttempts === 0) {
         document.getElementById('finalBody').textContent = "No quedan intentos. El número era " + numberToGuess;
         showFinalModal();
+        loseSound.play();
         return;
     }
 
@@ -61,14 +71,17 @@ function guessNumber() {
     for (let i = 0; i < 4; i++) {
         if (guess[i] === numberToGuess[i]) {
             match++;
+            matchSound.play();
         } else if (numberToGuess.includes(guess[i])) {
             coincidence++;
+            coincidenceSound.play();
         }
     }
 
     if (match === 4) {
         document.getElementById('finalBody').textContent = "¡Felicidades! Has adivinado el número: " + numberToGuess;
         showFinalModal();
+        winSound.play();
         return;
     }
 
