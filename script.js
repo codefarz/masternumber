@@ -69,7 +69,8 @@ function guessNumber() {
     }
 
     if (remainingAttempts === 0) {
-        document.getElementById('finalBody').textContent = "No quedan intentos. El número era " + numberToGuess;
+        document.getElementById('finalTitle').textContent = "Fin del juego Master " + playerName;
+        document.getElementById('finalBody').textContent = "No te quedan intentos pero puedes mejorar, inténtalo de nuevo. El número era " + numberToGuess;
         showFinalModal();
         loseSound.play();
         return;
@@ -90,7 +91,7 @@ function guessNumber() {
     }
 
     if (match === 4) {
-        document.getElementById('finalBody').textContent = "¡Felicidades! Has adivinado el número: " + numberToGuess;
+        document.getElementById('finalBody').textContent = "¡Felicidades! " + playerName + " Has adivinado el número: " + numberToGuess;
         showFinalModal();
         winSound.play();
         return;
