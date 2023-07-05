@@ -91,7 +91,8 @@ function guessNumber() {
     }
 
     if (match === 4) {
-        document.getElementById('finalBody').textContent = "¡Felicidades! " + playerName + " Has adivinado el número: " + numberToGuess;
+        document.getElementById('finalTitle').textContent = "Ganaste el juego Master " + playerName;
+        document.getElementById('finalBody').textContent = "¡Felicidades! Has adivinado el número: " + numberToGuess;
         showFinalModal();
         winSound.play();
         return;
