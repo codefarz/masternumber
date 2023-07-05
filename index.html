@@ -15,11 +15,15 @@
             <h5 class="modal-title">Instrucciones</h5>
           </div>
           <div class="modal-body px-4 px-lg-5">
-            <p>En este juego debes descubrir una secuencia aleatoria de 4 dígitos distintos.</p>
+            <p>En este juego debes descubrir una secuencia aleatoria de 4 dígitos distintos. Para lograr tu objetivo cuentas con las siguientes pistas que el sistema te dará cada vez que intentes adivinar el número:</p>
             <ul>
                 <li><strong>Coincidencia:</strong> Uno de tus dígitos pertenece a la secuencia, pero su ubicación es incorrecta.</li>
                 <li><strong>Match:</strong> Uno de tus dígitos coincide con un dígito de la secuencia, en la ubicación correcta.</li>
             </ul>
+            <p>Ahora, antes de comenzar ingresa tu nombre y el número de intentos que quieres tener para adivinar el número</p>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" id="nameInput" placeholder="Ingresa tu nombre">
+            </div>
             <div class="input-group mb-3">
                 <input type="number" class="form-control" id="attemptInput" min="1" placeholder="Ingresa el Número de intentos">
             </div>
@@ -58,7 +62,8 @@
           </div>
           <div class="row">
             <div class="col-10 justify-content-center mx-auto text-center">
-              <h1 class="mb-3">Master Number</h1>
+              <h1 class="mb-3"><strong>Master Number</strong></h1>
+              <h2 id="welcomeMessage"></h2>
               <p>Adivina el número de 4 cifras</p>
               <p id="attemptsDisplay">Intentos: 0</p>
               <div class="input-group mb-3">

@@ -1,5 +1,6 @@
-// Declarar remainingAttempts globalmente para que esté disponible en todas las funciones
+// Declaramos las variables globales
 let remainingAttempts;
+let playerName;
 
 // Declaramos los sonidos que tendrá el juego
 let startGameSound = new Audio('success-fanfare-trumpets-6185.mp3');
@@ -19,14 +20,17 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 function setAttempts() {
     remainingAttempts = document.getElementById('attemptInput').value;
+    let name = document.getElementById('nameInput').value;
     if (remainingAttempts > 0) {
-        document.getElementById('attemptsDisplay').textContent = "Intentos: " + remainingAttempts;
+        document.getElementById('attemptsDisplay').textContent = "Intentos: " + remainingAttempts + " ❤️";
         let myModal = bootstrap.Modal.getInstance(document.getElementById('attemptsModal'));
         myModal.hide();
     }
     else {
         alert("Introduzca un número de intentos")
     }
+    playerName = name;
+    document.getElementById('welcomeMessage').textContent = "Hola Master " + playerName;
     startGameSound.play();
 }
 
@@ -92,9 +96,8 @@ function guessNumber() {
         return;
     }
 
-    document.getElementById('result').innerHTML = "Coincidencias: " + coincidence + ", Matchs: " + match + ". Te quedan " + remainingAttempts + " intentos.";
-
     addRowToTable(guess, coincidence, match)
+    document.getElementById('attemptsDisplay').textContent = "Intentos: " + remainingAttempts + " ❤️"
 }
 
 function showFinalModal() {
