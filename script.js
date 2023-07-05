@@ -68,6 +68,8 @@ function guessNumber() {
         return;
     }
 
+    remainingAttempts--;
+
     if (remainingAttempts === 0) {
         document.getElementById('finalTitle').textContent = "Fin del juego Master " + playerName;
         document.getElementById('finalBody').textContent = "No te quedan intentos pero puedes mejorar, inténtalo de nuevo. El número era " + numberToGuess;
@@ -75,8 +77,6 @@ function guessNumber() {
         loseSound.play();
         return;
     }
-
-    remainingAttempts--;
 
     let match = 0;
     let coincidence = 0;
@@ -99,7 +99,7 @@ function guessNumber() {
     }
 
     addRowToTable(guess, coincidence, match)
-    document.getElementById('attemptsDisplay').textContent = "Intentos: " + remainingAttempts + " ❤️"
+    document.getElementById('attemptsDisplay').textContent = "Te quedan: " + remainingAttempts + " ❤️ intentos"
 }
 
 function showFinalModal() {
