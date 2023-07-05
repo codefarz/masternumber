@@ -121,3 +121,8 @@ function addRowToTable(guess, coincidence, match) {
     `;
     table.innerHTML += newRow;
 }
+
+document.querySelector(".help-icon").addEventListener('click', function() {
+    let modal = new bootstrap.Modal(document.getElementById('instructionsModal'));
+    modal.show();
+});

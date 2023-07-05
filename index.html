@@ -5,8 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Master Number</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+    <link rel="stylesheet" href="/css/stylesheet.css">
   </head>
   <body>
+    <div class="help-icon">
+      <i class="fas fa-question-circle" style="color: #0a5ceb;"></i>
+    </div>
+    
+    <div class="modal" tabindex="-1" id="instructionsModal">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Instrucciones</h5>
+          </div>
+          <div class="modal-body">
+            <div id="instructionsCarousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#instructionsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#instructionsCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#instructionsCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#instructionsCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+              </div>
+              <div class="carousel-inner">
+                <div class="carousel-item active mb-4 px-5" data-bs-interval="30000">
+                  <p class="px-5">En este juego debes descubrir una secuencia aleatoria de 4 dígitos distintos. Para lograr tu objetivo cuentas con las siguientes pistas que el sistema te dará cada vez que intentes adivinar el número:</p>
+                  <ul class="px-5">
+                      <li><strong>Coincidencia:</strong> Uno de tus dígitos pertenece a la secuencia, pero su ubicación es incorrecta.</li>
+                      <li><strong>Match:</strong> Uno de tus dígitos coincide con un dígito de la secuencia, en la ubicación correcta.</li>
+                  </ul>
+                </div>
+                <div class="carousel-item mb-4 px-5" data-bs-interval="30000">
+                  <p class="px-5"><strong>Coincidencia:</strong> Uno de tus dígitos pertenece a la secuencia, pero su ubicación es incorrecta.</p>
+                  <p class="px-5"><strong>Ejemplo: </strong>Tu escribes <strong>1234</strong> y el número oculto es <strong>2058</strong>. En este caso tendrás 1 coincidencia, ya que el número oculto si tiene el número 2 pero no está en la segunda posición sino en la primera.</p>
+                </div>
+                <div class="carousel-item mb-4 px-5" data-bs-interval="30000">
+                  <p class="px-5"><strong>Match:</strong> Uno de tus dígitos coincide con un dígito de la secuencia, en la ubicación correcta.</p>
+                  <p class="px-5"><strong>Ejemplo: </strong>Tu escribes <strong>1234</strong> y el número oculto es <strong>1058</strong>. En este caso tendrás 1 Match, ya que el número oculto tiene el número 1 y está en la primera posición.</p>
+                </div>
+                <div class="carousel-item mb-4 px-5" data-bs-interval="30000">
+                  <p class="px-5"><strong>Coincidencia</strong> y <strong>Match:</strong> Uno de tus dígitos coincide con un dígito de la secuencia en distinta ubicación y otro coincide con un número de la secuencia en la ubicación exacta.</p>
+                  <p class="px-5"><strong>Ejemplo: </strong>Tu escribes <strong>1234</strong> y el número oculto es <strong>0184</strong>. En este caso tendrás 1 coincidencia y 1 Match, ya que el número oculto tiene el número 1 pero está en una ubicación distinta y también tiene el número 4 que está en la posición correcta.</p>
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#instructionsCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#instructionsCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
     <!-- Modal HTML -->
     <div class="modal" tabindex="-1" id="attemptsModal">
       <div class="modal-dialog">
@@ -57,8 +116,8 @@
       <div class="row justify-content-center">
         <div class="col-12 col-lg-6 container">
           <div class="row d-flex">
-            <div class="col-12 d-flex justify-content-center pb-4">
-              <img src="imgs/escudo-inem.png" class="mx-auto">
+            <div class="col-11 d-flex justify-content-center pb-4 ps-5 pe-0">
+              <img src="imgs/escudo-inem.png" class="mx-auto w-25">
             </div>
           </div>
           <div class="row">
@@ -93,6 +152,7 @@
         </div>
       </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
     <script src="script.js"></script>
