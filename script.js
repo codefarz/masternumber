@@ -1,5 +1,6 @@
 // Declaramos las variables globales
 let remainingAttempts;
+let attemptsUsed
 let playerName;
 
 // Declaramos los sonidos que tendrá el juego
@@ -20,9 +21,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 function setAttempts() {
     remainingAttempts = document.getElementById('attemptInput').value;
+    attemptsUsed = remainingAttempts;
     let name = document.getElementById('nameInput').value;
     if (remainingAttempts > 0) {
-        document.getElementById('attemptsDisplay').textContent = "Intentos: " + remainingAttempts + " ❤️";
+        document.getElementById('attemptsDisplay').innerHTML = "Intentos: " + remainingAttempts + " ❤️";
         let myModal = bootstrap.Modal.getInstance(document.getElementById('attemptsModal'));
         myModal.hide();
     }
@@ -30,7 +32,7 @@ function setAttempts() {
         alert("Introduzca un número de intentos")
     }
     playerName = name;
-    document.getElementById('welcomeMessage').textContent = "Hola Master " + playerName;
+    document.getElementById('welcomeMessage').innerHTML = "Hola Master " + playerName;
     startGameSound.play();
 }
 
@@ -71,8 +73,8 @@ function guessNumber() {
     remainingAttempts--;
 
     if (remainingAttempts === 0) {
-        document.getElementById('finalTitle').textContent = "Fin del juego Master " + playerName;
-        document.getElementById('finalBody').textContent = "No te quedan intentos pero puedes mejorar, inténtalo de nuevo. El número era " + numberToGuess;
+        document.getElementById('finalTitle').innerHTML = "Fin del juego Master " + playerName;
+        document.getElementById('finalBody').innerHTML = "No te quedan intentos pero puedes mejorar, inténtalo de nuevo. El número era " + numberToGuess;
         showFinalModal();
         loseSound.play();
         return;
@@ -91,15 +93,16 @@ function guessNumber() {
     }
 
     if (match === 4) {
-        document.getElementById('finalTitle').textContent = "Ganaste el juego Master " + playerName;
-        document.getElementById('finalBody').textContent = "¡Felicidades! Has adivinado el número: " + numberToGuess;
+        attemptsUsed = attemptsUsed-remainingAttempts;
+        document.getElementById('finalTitle').innerHTML = "Ganaste el juego Master " + playerName;
+        document.getElementById('finalBody').innerHTML = "¡Felicidades! Has adivinado el número: <strong>" + numberToGuess + "</strong>. Lo has logrado en <strong>" + attemptsUsed + "</strong> intentos. ¿Eres capaz de mejorar tu marca?";
         showFinalModal();
         winSound.play();
         return;
-    }
+    }    
 
     addRowToTable(guess, coincidence, match)
-    document.getElementById('attemptsDisplay').textContent = "Te quedan: " + remainingAttempts + " ❤️ intentos"
+    document.getElementById('attemptsDisplay').innerHTML = "Te quedan: " + remainingAttempts + " ❤️ intentos"
 }
 
 function showFinalModal() {
