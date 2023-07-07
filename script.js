@@ -72,14 +72,6 @@ function guessNumber() {
 
     remainingAttempts--;
 
-    if (remainingAttempts === 0) {
-        document.getElementById('finalTitle').innerHTML = "Fin del juego Master " + playerName;
-        document.getElementById('finalBody').innerHTML = "No te quedan intentos pero puedes mejorar, inténtalo de nuevo. El número era " + numberToGuess;
-        showFinalModal();
-        loseSound.play();
-        return;
-    }
-
     let match = 0;
     let coincidence = 0;
     for (let i = 0; i < 4; i++) {
@@ -93,11 +85,19 @@ function guessNumber() {
     }
 
     if (match === 4) {
-        attemptsUsed = attemptsUsed-remainingAttempts;
+        attemptsUsed = attemptsUsed - remainingAttempts;
         document.getElementById('finalTitle').innerHTML = "Ganaste el juego Master " + playerName;
         document.getElementById('finalBody').innerHTML = "¡Felicidades! Has adivinado el número: <strong>" + numberToGuess + "</strong>. Lo has logrado en <strong>" + attemptsUsed + "</strong> intentos. ¿Eres capaz de mejorar tu marca?";
         showFinalModal();
         winSound.play();
+        return;
+    } 
+
+    if (remainingAttempts === 0) {
+        document.getElementById('finalTitle').innerHTML = "Fin del juego Master " + playerName;
+        document.getElementById('finalBody').innerHTML = "No te quedan intentos pero puedes mejorar, inténtalo de nuevo. El número era " + numberToGuess;
+        showFinalModal();
+        loseSound.play();
         return;
     }    
 
